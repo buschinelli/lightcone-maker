@@ -11,8 +11,12 @@ import matplotlib.pyplot as plt
 ##### Pseudo code 
 
 def make_lightcone(nu_size, N, spatial_spacing):
-    nu_i = 236 # with units
-    nu_f = 101 # with units
+    ## nu_size: integer - size of the frequency axis of lightcone
+    ## N: integer - size of the boxes used to produce the lightcone
+    ## spatial_spacing: 1D 3 entries array - spatial spacing of the boxes
+    #### Initial and final frequency - choose them based on the box you have
+    nu_i = 200 # with units
+    nu_f = 100 # with units
     nu_spacing = -(nu_f-nu_i)/nu_size
     lightcone = np.zeros((N,N,nu_size))
     nu_emitted = 1420
@@ -37,7 +41,10 @@ def make_lightcone(nu_size, N, spatial_spacing):
     return lightcone
 
 def data_library(redshift_range, N):
-    name = 'delta_T_v3_z'
+    ## redshift_range: 1D 2 entries array - range of redshift you want this code to find the boxes you want to use
+    ## N: integer - size of the boxes
+    name = 'delta_T_v3_z' #### Standard name to look for the boxes: change the boxes names in your library to this + the redshift they are.
+                          #### Example: if the box is at redshift 5.5, its name must be delta_T_v3_z5.5 in your library
     z_run = redshift_range[0]
     zero_str = '0'
     z0 = redshift_range[0]
